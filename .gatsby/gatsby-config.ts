@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 import { GatsbyConfig } from 'gatsby';
 import { resolve } from 'path';
 
-if (process.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== 'production') {
   dotenv.config({
     path: `.env.${process.env.NODE_ENV}`,
   });
