@@ -2,11 +2,9 @@ import * as dotenv from 'dotenv';
 import { GatsbyConfig } from 'gatsby';
 import { resolve } from 'path';
 
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config({
-    path: `.env.${process.env.NODE_ENV}`,
-  });
-}
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const rootPath = (filePath: string) => resolve(__dirname, '..', filePath);
 
