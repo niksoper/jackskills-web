@@ -1,0 +1,46 @@
+.armstrong-label {
+  background: white;
+  position: absolute;
+  top: -10px;
+  left: $spacing-small;
+  padding-left: $spacing-xsmall;
+  padding-right: $spacing-xsmall;
+  font-size: $font-size-xxsmall;
+  display: inline-block;
+  z-index: 2;
+}
+
+.armstrong-input {
+  &.text-input,
+  &.select-input,
+  &.date-input,
+  &.date-picker {
+    border: 1px solid $gray-medium;
+  }
+  margin-top: $spacing-small;
+  margin-bottom: $spacing-medium;
+
+  input,
+  select,
+  textarea {
+    border: none;
+  }
+  &.switch-input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    .armstrong-label {
+      position: static;
+      padding-left: $spacing-small;
+      margin-bottom: 0;
+    }
+  }
+  &.show-validation {
+    margin-bottom: 40px;
+    .validation-message {
+      position: absolute;
+      width: 100%;
+    }
+  }
+}

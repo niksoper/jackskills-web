@@ -1,0 +1,25 @@
+name: Build
+on: push
+
+jobs:
+  build:
+    name: Gatsby Build
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up the node version
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: '14.3.0'
+
+      - name: Confirm node version
+        run: node -v
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Gatsby Build
+        run: npm run build

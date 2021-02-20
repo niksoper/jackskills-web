@@ -1,0 +1,25 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-size: $font-size-large;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: $font-size-medium;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: $font-size-small-medium;
+  font-weight: 400;
+}
+
+p {
+  font-size: $font-size-xsmall;
+  &.intro {
+    font-weight: 700;
+  }
+}

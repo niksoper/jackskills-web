@@ -1,0 +1,34 @@
+@import '../theme/shared/variables';
+
+#gatsby-focus-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#___gatsby {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 20px;
+  background: $brand-primary;
+  color: white;
+
+  a {
+    color: $white;
+    padding: $spacing-medium;
+    text-decoration: none;
+  }
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  background-color: #75a9bf;
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
