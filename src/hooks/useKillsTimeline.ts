@@ -17,13 +17,13 @@ export interface IKillFreeStreak {
 export type KillsTimelineEntry = IKillDay | IKillFreeStreak;
 
 export function useKillsTimeline(kills: IKill[]): KillsTimelineEntry[] {
-  return React.useMemo<KillsTimelineEntry[]>(() => killsToTimeline(kills), [kills]);
+  return React.useMemo<KillsTimelineEntry[]>(() => killsToTimeline(kills, new Date()), [kills]);
 }
 
 const dateFormat = 'yyyy-MM-dd';
 const formatDate = (date: Date) => format(date, dateFormat) as DateString;
 
-export function killsToTimeline(kills: IKill[]): KillsTimelineEntry[] {
+export function killsToTimeline(kills: IKill[], today: Date): KillsTimelineEntry[] {
   const seed: KillsTimelineEntry[] = [];
 
   const killsWithDates = kills.map((k) => ({
@@ -32,6 +32,17 @@ export function killsToTimeline(kills: IKill[]): KillsTimelineEntry[] {
   }));
 
   return killsWithDates.reduce((timeline, kill, i, allKills) => {
+    if (i === 0) {
+      const daysSinceLastKill = differenceInDays(today, kill.killDateObj);
+      if (daysSinceLastKill > 0) {
+        timeline.push({
+          kind: 'kill-free-streak',
+          startDate: formatDate(addDays(kill.killDateObj, 1)),
+          streakLength: daysSinceLastKill,
+        });
+      }
+    }
+
     const nextKill = i > 0 ? allKills[i - 1] : undefined;
     const daysBetweenKills = nextKill ? differenceInDays(nextKill.killDateObj, kill.killDateObj) : undefined;
 
