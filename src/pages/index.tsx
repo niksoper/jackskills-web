@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Shell from '../layout/shell';
 import { IKill } from '../api/killsApi';
+import { KillsTimeline } from '../components/KillsTimeline';
 
 import './index.scss';
 
@@ -17,7 +18,7 @@ const Index: React.FunctionComponent<{}> = () => {
   return (
     <Shell>
       <div className="fixed-width">
-        <pre>{JSON.stringify(kills, null, 2)}</pre>
+        <KillsTimeline kills={kills} />
       </div>
     </Shell>
   );
