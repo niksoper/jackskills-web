@@ -45,7 +45,7 @@ export interface IKillFreeStreakProps {
 export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({ streak: { date, streakLength } }) => {
   const daysMessage = React.useMemo(() => {
     const days = streakLength === 1 ? 'day' : 'days';
-    return `${streakLength} days`;
+    return `${streakLength} ${days}`;
   }, [streakLength]);
   return (
     <div className="kill-free-streak">
