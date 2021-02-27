@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { IKill } from '../api/killsApi';
+
 import { useKillsTimeline } from '../hooks/useKillsTimeline';
+import { IKill } from '../types/kills';
+import { KillDay, KillFreeStreak } from './KillsTimelineEvents';
+
+import './KillsTimeline.scss';
 
 export interface IKillsTimelineProps {
   kills: IKill[];
@@ -8,5 +12,20 @@ export interface IKillsTimelineProps {
 
 export const KillsTimeline: React.FunctionComponent<IKillsTimelineProps> = ({ kills }) => {
   const timeline = useKillsTimeline(kills);
-  return <pre>{JSON.stringify(timeline, null, 2)}</pre>;
+  return (
+    <div className="timeline-wrapper">
+      <div className="timeline">
+        {timeline.map((event) => {
+          switch (event.kind) {
+            case 'kill-day':
+              return <KillDay killDay={event} />;
+            case 'kill-free-streak':
+              return <KillFreeStreak streak={event} />;
+            default:
+              const whoops: never = event;
+          }
+        })}
+      </div>
+    </div>
+  );
 };

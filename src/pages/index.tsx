@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import Shell from '../layout/shell';
-import { IKill } from '../api/killsApi';
 import { KillsTimeline } from '../components/KillsTimeline';
+import { IKill } from '../types/kills';
 
 import './index.scss';
 

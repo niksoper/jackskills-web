@@ -1,0 +1,11 @@
+@import '../theme/shared/variables';
+
+.timeline-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.timeline {
+  padding: $spacing-medium;
+  width: 100%;
+}

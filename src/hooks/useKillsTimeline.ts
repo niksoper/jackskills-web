@@ -1,35 +1,27 @@
 import { parse, differenceInDays, addDays, format } from 'date-fns';
 import * as React from 'react';
-import { IKill, DateString, KillVictim } from '../api/killsApi';
-
-export interface IKillDay {
-  kind: 'kill-day';
-  killDate: DateString;
-  victims: KillVictim[];
-}
-
-export interface IKillFreeStreak {
-  kind: 'kill-free-streak';
-  startDate: DateString;
-  streakLength: number;
-}
-
-export type KillsTimelineEntry = IKillDay | IKillFreeStreak;
+import { DateString } from '../types/core';
+import { IKill, IKillDay, KillsTimelineEntry } from '../types/kills';
 
 export function useKillsTimeline(kills: IKill[]): KillsTimelineEntry[] {
   return React.useMemo<KillsTimelineEntry[]>(() => killsToTimeline(kills, new Date()), [kills]);
 }
 
-const dateFormat = 'yyyy-MM-dd';
-const formatDate = (date: Date) => format(date, dateFormat) as DateString;
+const inputDateFormat = 'yyyy-MM-dd';
+const formatDate = (date: Date) => format(date, 'do MMM') as DateString;
 
 export function killsToTimeline(kills: IKill[], today: Date): KillsTimelineEntry[] {
   const seed: KillsTimelineEntry[] = [];
 
-  const killsWithDates = kills.map((k) => ({
-    ...k,
-    killDateObj: parse(k.killDate, dateFormat, new Date()),
-  }));
+  const killsWithDates = kills.map((k) => {
+    const killDateObj = parse(k.killDate, inputDateFormat, new Date());
+
+    return {
+      ...k,
+      killDateObj,
+      killDate: formatDate(killDateObj),
+    };
+  });
 
   return killsWithDates.reduce((timeline, kill, i, allKills) => {
     if (i === 0) {
@@ -37,7 +29,7 @@ export function killsToTimeline(kills: IKill[], today: Date): KillsTimelineEntry
       if (daysSinceLastKill > 0) {
         timeline.push({
           kind: 'kill-free-streak',
-          startDate: formatDate(addDays(kill.killDateObj, 1)),
+          date: formatDate(today),
           streakLength: daysSinceLastKill,
         });
       }
@@ -55,7 +47,7 @@ export function killsToTimeline(kills: IKill[], today: Date): KillsTimelineEntry
     if (daysBetweenKills > 1) {
       timeline.push({
         kind: 'kill-free-streak',
-        startDate: formatDate(addDays(kill.killDateObj, 1)),
+        date: formatDate(addDays(nextKill.killDateObj, -1)),
         streakLength: daysBetweenKills - 1,
       });
     }

@@ -1,0 +1,54 @@
+@import '../theme/shared/variables';
+
+.kill-day,
+.kill-free-streak {
+  position: relative;
+  margin: $spacing-small;
+  padding: $spacing-medium;
+  border-radius: $spacing-xsmall;
+
+  text-align: center;
+
+  .timeline-date {
+    font-size: $font-size-small-medium;
+    font-weight: $font-weight-light;
+
+    color: $white;
+  }
+}
+
+.kill-day {
+  background-color: red;
+
+  color: darken($color: red, $amount: 40%);
+
+  li {
+    list-style: none;
+  }
+}
+
+.kill-free-streak {
+  background-color: green;
+  color: lighten($color: green, $amount: 20%);
+
+  .streak-length {
+    margin: $spacing-xsmall;
+    font-size: $font-size-large;
+  }
+}
+
+.badge {
+  position: absolute;
+
+  padding: $spacing-xsmall;
+  border: $spacing-xsmall solid gold;
+  border-radius: $spacing-xsmall;
+
+  background-color: darkred;
+  color: orange;
+
+  left: $spacing-medium;
+  top: $spacing-medium;
+
+  transform: rotate(-15deg);
+}
