@@ -6,6 +6,15 @@
 }
 
 .timeline {
+  position: relative;
   padding: $spacing-medium;
   width: 100%;
+
+  &::before {
+    content: '';
+    border: 1px solid $gray-very-light;
+    position: absolute;
+    height: 100%;
+    left: 44px;
+  }
 }

@@ -3,33 +3,46 @@
 .kill-day,
 .kill-free-streak {
   position: relative;
-  margin: $spacing-small;
+  margin: $spacing-small 0;
   padding: $spacing-medium;
-  border-radius: $spacing-xsmall;
-
-  text-align: center;
 
   .timeline-date {
     font-size: $font-size-small-medium;
     font-weight: $font-weight-light;
-
-    color: $white;
   }
 }
 
 .kill-day {
-  background-color: red;
+  display: flex;
+  background-color: $blood-red;
+  color: $white;
 
-  color: darken($color: red, $amount: 40%);
+  .kill-detail {
+    margin-left: $spacing-medium;
+  }
+
+  .kill-icon-wrapper {
+    display: flex;
+
+    .kill-icon {
+      background-color: orange;
+      text-align: center;
+      padding: $spacing-small;
+      border: 1px solid $gray-very-light;
+      border-radius: 50%;
+      font-size: $font-size-medium;
+    }
+  }
 
   li {
     list-style: none;
+    margin: 0;
   }
 }
 
 .kill-free-streak {
-  background-color: green;
   color: lighten($color: green, $amount: 20%);
+  margin-left: 50px;
 
   .streak-length {
     margin: $spacing-xsmall;
@@ -47,8 +60,8 @@
   background-color: darkred;
   color: orange;
 
-  left: $spacing-medium;
+  right: $spacing-medium;
   top: $spacing-medium;
 
-  transform: rotate(-15deg);
+  transform: rotate(15deg);
 }

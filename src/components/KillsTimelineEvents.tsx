@@ -27,13 +27,18 @@ export const KillDay: React.FunctionComponent<IKillDayProps> = ({ killDay: { kil
 
   return (
     <div className="kill-day">
-      <TimelineDate date={killDate} />
-      <ul>
-        {victims.map((victim) => (
-          <li>{getMessage(victim)}</li>
-        ))}
-      </ul>
-      {victims.length > 1 && <div className="badge">multi-kill</div>}
+      <div className="kill-icon-wrapper">
+        <div className="kill-icon">💀</div>
+      </div>
+      <div className="kill-detail">
+        <TimelineDate date={killDate} />
+        <ul>
+          {victims.map((victim) => (
+            <li>{getMessage(victim)}</li>
+          ))}
+        </ul>
+        {victims.length > 1 && <div className="badge">multi-kill</div>}
+      </div>
     </div>
   );
 };
