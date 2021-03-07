@@ -33,8 +33,8 @@ export const KillDay: React.FunctionComponent<IKillDayProps> = ({ killDay: { kil
       <div className="kill-detail">
         <TimelineDate date={killDate} />
         <ul>
-          {victims.map((victim) => (
-            <li>{getMessage(victim)}</li>
+          {victims.map((victim, i) => (
+            <li key={i}>{getMessage(victim)}</li>
           ))}
         </ul>
         {victims.length > 1 && <div className="badge">multi-kill</div>}
@@ -55,10 +55,10 @@ export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({ 
   return (
     <div className="kill-free-streak">
       <TimelineDate date={date} />
-      <p>
+      <div>
         It's been
         <span className="streak-length">{daysMessage}</span>
-      </p>
+      </div>
     </div>
   );
 };

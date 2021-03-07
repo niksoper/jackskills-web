@@ -16,6 +16,7 @@
   display: flex;
   background-color: $blood-red;
   color: $white;
+  margin: 2px 0;
 
   .kill-detail {
     margin-left: $spacing-medium;
@@ -27,10 +28,12 @@
     .kill-icon {
       background-color: orange;
       text-align: center;
-      padding: $spacing-small;
+      padding: 8px;
       border: 1px solid $gray-very-light;
       border-radius: 50%;
       font-size: $font-size-medium;
+      height: 50px;
+      width: 50px;
     }
   }
 
@@ -41,7 +44,7 @@
 }
 
 .kill-free-streak {
-  color: lighten($color: green, $amount: 20%);
+  color: $gray-light;
   margin-left: 50px;
 
   .streak-length {

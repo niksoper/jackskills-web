@@ -18,9 +18,9 @@ export const KillsTimeline: React.FunctionComponent<IKillsTimelineProps> = ({ ki
         {timeline.map((event) => {
           switch (event.kind) {
             case 'kill-day':
-              return <KillDay killDay={event} />;
+              return <KillDay key={event.killDate} killDay={event} />;
             case 'kill-free-streak':
-              return <KillFreeStreak streak={event} />;
+              return <KillFreeStreak key={event.date} streak={event} />;
             default:
               const whoops: never = event;
           }
