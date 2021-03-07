@@ -44,12 +44,62 @@
 }
 
 .kill-free-streak {
-  color: $gray-light;
+  color: #84dcc6;
+  font-size: $font-size-xsmall;
+
   margin-left: 50px;
 
-  .streak-length {
-    margin: $spacing-xsmall;
-    font-size: $font-size-large;
+  .message {
+    display: flex;
+    align-items: baseline;
+    flex-flow: wrap;
+  }
+
+  .been {
+    margin-right: $spacing-xsmall;
+  }
+
+  &.xsmall {
+    margin-top: $spacing-xsmall;
+    margin-bottom: $spacing-xsmall;
+    .streak-length {
+      font-size: $font-size-xsmall;
+    }
+  }
+  &.small {
+    margin-top: $spacing-small;
+    margin-bottom: $spacing-small;
+    .streak-length {
+      font-size: $font-size-small;
+    }
+  }
+  &.medium {
+    margin-top: $spacing-medium;
+    margin-bottom: $spacing-medium;
+    .streak-length {
+      font-size: $font-size-medium;
+    }
+  }
+  &.large {
+    margin-top: $spacing-large;
+    margin-bottom: $spacing-large;
+    .streak-length {
+      font-size: $font-size-large;
+    }
+  }
+  &.xlarge {
+    margin-top: $spacing-xlarge;
+    margin-bottom: $spacing-xlarge;
+    .streak-length {
+      font-size: $font-size-xlarge;
+    }
+  }
+  &.xxlarge {
+    margin-top: $spacing-xxlarge;
+    margin-bottom: $spacing-xxlarge;
+    .streak-length {
+      font-size: $font-size-xxlarge;
+    }
   }
 }
 

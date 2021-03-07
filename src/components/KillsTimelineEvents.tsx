@@ -52,11 +52,35 @@ export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({ 
     const days = streakLength === 1 ? 'day' : 'days';
     return `${streakLength} ${days}`;
   }, [streakLength]);
+
+  const fontSizeClass = React.useMemo(() => {
+    if (streakLength < 3) {
+      return 'xsmall';
+    }
+
+    if (streakLength < 5) {
+      return 'small';
+    }
+
+    if (streakLength < 8) {
+      return 'medium';
+    }
+
+    if (streakLength < 13) {
+      return 'large';
+    }
+
+    if (streakLength < 21) {
+      return 'xlarge';
+    }
+
+    return 'xxlarge';
+  }, [streakLength]);
+
   return (
-    <div className="kill-free-streak">
-      <TimelineDate date={date} />
-      <div>
-        It's been
+    <div className={`kill-free-streak ${fontSizeClass}`}>
+      <div className="message">
+        <span className="been">It's been</span>
         <span className="streak-length">{daysMessage}</span>
       </div>
     </div>

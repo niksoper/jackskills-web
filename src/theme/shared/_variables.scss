@@ -8,12 +8,12 @@ $screen-size-tablet: 1000px;
 
 $font-size-xxsmall: 14px;
 $font-size-xsmall: 16px; //spec
-$font-size-small: 20px; //spec
+$font-size-small: 24px; //spec
 $font-size-small-medium: 24px;
 $font-size-medium: 30px; //spec
-$font-size-large: 36px; //spec
-$font-size-xlarge: 40px;
-$font-size-xxlarge: 60px;
+$font-size-large: 40px; //spec
+$font-size-xlarge: 60px;
+$font-size-xxlarge: 90px;
 
 $font-weight-light: 300;
 $font-weight-regular: 400;
@@ -24,7 +24,6 @@ $font-sizes: (
   xxsmall $font-size-xxsmall,
   xsmall $font-size-xsmall,
   small $font-size-small,
-  smallmedium $font-size-small-medium,
   medium $font-size-medium,
   large $font-size-large,
   xlarge $font-size-xlarge,
