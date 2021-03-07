@@ -45,9 +45,13 @@ export const KillDay: React.FunctionComponent<IKillDayProps> = ({ killDay: { kil
 
 export interface IKillFreeStreakProps {
   streak: IKillFreeStreak;
+  showDate?: boolean;
 }
 
-export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({ streak: { date, streakLength } }) => {
+export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({
+  showDate,
+  streak: { date, streakLength },
+}) => {
   const daysMessage = React.useMemo(() => {
     const days = streakLength === 1 ? 'day' : 'days';
     return `${streakLength} ${days}`;
@@ -79,6 +83,7 @@ export const KillFreeStreak: React.FunctionComponent<IKillFreeStreakProps> = ({ 
 
   return (
     <div className={`kill-free-streak ${fontSizeClass}`}>
+      {!!showDate && <TimelineDate date={date} />}
       <div className="message">
         <span className="been">It's been</span>
         <span className="streak-length">{daysMessage}</span>

@@ -15,12 +15,12 @@ export const KillsTimeline: React.FunctionComponent<IKillsTimelineProps> = ({ ki
   return (
     <div className="timeline-wrapper">
       <div className="timeline">
-        {timeline.map((event) => {
+        {timeline.map((event, index) => {
           switch (event.kind) {
             case 'kill-day':
               return <KillDay key={event.killDate} killDay={event} />;
             case 'kill-free-streak':
-              return <KillFreeStreak key={event.date} streak={event} />;
+              return <KillFreeStreak key={event.date} streak={event} showDate={index === 0} />;
             default:
               const whoops: never = event;
           }
