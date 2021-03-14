@@ -7,31 +7,44 @@ import { HeaderQuery } from '../../types/graphql-types';
 
 import './shell.scss';
 
-const Shell: React.FunctionComponent = ({ children }) => {
+export interface IShellProps {
+  siteKind: 'kills' | 'skills';
+}
+
+const Shell: React.FunctionComponent<IShellProps> = ({ children, siteKind }) => {
   return (
     <StaticQuery
       query={graphql`
         query Header {
           site {
             siteMetadata {
-              siteName
+              skillsSiteName
+              killSiteName
             }
           }
         }
       `}
       render={(data: HeaderQuery) => {
-        const { siteName } = data.site.siteMetadata;
+        const { skillsSiteName, killSiteName } = data.site.siteMetadata;
+
+        const siteName = React.useMemo(() => (siteKind === 'kills' ? killSiteName : skillsSiteName), [
+          siteKind,
+          skillsSiteName,
+          killSiteName,
+        ]);
+        const linkTarget = React.useMemo(() => (siteKind === 'kills' ? '/' : '/kills'), [siteKind]);
+
         return (
-          <>
+          <div className={`main-wrapper ${siteKind}`}>
             <Helmet defaultTitle={siteName} titleTemplate={`%s — ${siteName}`} />
             <header>
               <div className="fixed-width">
-                <Link to="/">{siteName}</Link>
+                <Link to={linkTarget}>{siteName}</Link>
               </div>
             </header>
             <main>{children}</main>
             <Footer />
-          </>
+          </div>
         );
       }}
     />

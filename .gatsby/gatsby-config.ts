@@ -10,7 +10,8 @@ const rootPath = (filePath: string) => resolve(__dirname, '..', filePath);
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteName: `Jack's Kills`,
+    skillsSiteName: `JackSkills`,
+    killSiteName: `JacksKills`,
     siteUrl: `https://jackskills.com`,
     companyName: `Jack Soper`,
   },

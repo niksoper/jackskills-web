@@ -56,8 +56,10 @@ $white: #ffffff;
 
 $blood-red: #8a0303;
 
-$brand-primary: #75a9bf;
-$brand-secondary: #2c3e50;
+$brand-primary: #ffe400;
+$brand-primary-text: #555555;
+$brand-secondary: lighten($blood-red, 15%);
+$brand-secondary-text: $white;
 
 $gray-base: #4f5c69;
 

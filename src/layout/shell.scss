@@ -10,16 +10,23 @@
   flex-direction: column;
 }
 
-header {
+header,
+footer {
   padding: 20px;
   background: $brand-primary;
-  color: white;
 
   a {
-    color: $white;
     padding: $spacing-medium;
     text-decoration: none;
+    color: $brand-primary-text;
   }
+}
+
+.main-wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  color: $brand-primary-text;
 }
 
 main {
@@ -27,8 +34,18 @@ main {
 }
 
 footer {
-  background-color: #75a9bf;
-  padding: 20px;
   text-align: center;
-  color: white;
+}
+
+.kills {
+  color: $brand-secondary-text;
+
+  header,
+  footer {
+    background-color: $brand-secondary;
+
+    a {
+      color: $brand-secondary-text;
+    }
+  }
 }
